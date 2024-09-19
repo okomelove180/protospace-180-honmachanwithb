@@ -3,6 +3,20 @@ class PrototypesController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy] # showアクションにも使いたい場合は、only: [:show, :edit, :update, :destroy]とする
 
   def index
+    @prototypes = Prototype.all
+  end
+
+  def new
+    @prototype = Prototype.new
+  end
+
+  def create
+    @prototype = Prototype.new(prototype_params)
+    if @prototype.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
