@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:edit, :update, :destroy] # showアクションにも使いたい場合は、only: [:show, :edit, :update, :destroy]とする
+  before_action :set_item, only: [:edit, :update, :destroy, :show] # showアクションにも使いたい場合は、only: [:show, :edit, :update, :destroy]とする
 
   def index
     @prototypes = Prototype.all
@@ -29,6 +29,9 @@ class PrototypesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def show
   end
 
   def destroy
